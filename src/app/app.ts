@@ -35,6 +35,7 @@ export class App implements OnInit {
         "haha so funny",
         new Date(),
         85000
-      )
+      );
+      this.myOtherSnap.setLocation("Vendée");
   }
 }
