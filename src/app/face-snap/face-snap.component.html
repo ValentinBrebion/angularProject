@@ -1,4 +1,4 @@
-<div class="face__snap">
+<div class="face__snap" [ngClass]="{ snapped: userHasSnapped }">
     <div class="face__snap__card">
     <h2>{{ faceSnap.title }}</h2>
     @if (faceSnap.location) {
