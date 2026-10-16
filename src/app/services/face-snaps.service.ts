@@ -29,15 +29,20 @@ private faceSnaps: FaceSnap[] = [
         )
       ];
 
+      getFaceSnapById(faceSnapId: string): FaceSnap {
+        const foundFaceSnap = this.faceSnaps.find((faceSnap: FaceSnap) => faceSnap.id === faceSnapId);
+        if(!foundFaceSnap) {
+          throw new Error('FaceSnap not found !');
+        } 
+        return foundFaceSnap;
+      }
+
       getFaceSnaps(): FaceSnap[] {
         return [...this.faceSnaps]; 
       }
 
       snapFaceSnapById(faceSnapId: string, snapeType: SnapType): void {
-        const foundFaceSnap = this.faceSnaps.find((faceSnap: FaceSnap) => faceSnap.id === faceSnapId);
-        if(!foundFaceSnap) {
-          throw new Error('FaceSnap not found !');
-        } 
+        const foundFaceSnap = this.getFaceSnapById(faceSnapId);
         foundFaceSnap.snap(snapeType);
       }
 }

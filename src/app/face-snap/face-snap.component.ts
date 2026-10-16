@@ -1,46 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FaceSnap } from '../models/face-snap';
-import { NgStyle, NgClass,UpperCasePipe,LowerCasePipe,TitleCasePipe,DatePipe, DecimalPipe, PercentPipe, CurrencyPipe } from '@angular/common';
-import { FaceSnapsService } from '../services/face-snaps.service';
+import { TitleCasePipe } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-face-snap',
-  imports: [ NgStyle, NgClass, UpperCasePipe, LowerCasePipe, TitleCasePipe, DatePipe,DecimalPipe, PercentPipe, CurrencyPipe ],
+  imports: [ TitleCasePipe ],
   templateUrl: './face-snap.component.html',
   styleUrl: './face-snap.component.scss',
 })
-export class FaceSnapComponent implements OnInit {
+export class FaceSnapComponent {
   @Input() faceSnap!: FaceSnap
 
-  snapButtonText !: string;
-  userHasSnapped !: boolean;
-  myLargeNumber: number = 1542132.56;
-  myPercentNumber: number = 0.3367;
-  myMoney: number = 336.75;
+  constructor(private router:Router) {}
 
-  constructor(private faceSnapService: FaceSnapsService) {}
-
-  ngOnInit(): void {
-      this.snapButtonText = "Oh Snap";
-      this.userHasSnapped = false;
-  }
-
-  onSnap():void {
-    if(this.userHasSnapped) {
-      this.unSnap();
-    } else {
-      this.snap();
-    }
-  }
-
-  unSnap(): void {
-    this.faceSnapService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
-      this.snapButtonText = "Oh Snap";
-      this.userHasSnapped = false;
-  }
-
-  snap(): void {
-     this.faceSnapService.snapFaceSnapById(this.faceSnap.id, 'snap');
-      this.snapButtonText = "Ooups Unsnapped";
-      this.userHasSnapped = true;
+  onViewFaceSnap() {
+    this.router.navigateByUrl(`facesnaps/${this.faceSnap.id}`);
   }
 }

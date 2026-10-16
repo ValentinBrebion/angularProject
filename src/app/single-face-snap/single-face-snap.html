@@ -1,0 +1,25 @@
+<div class="face__snap" [ngClass]="{ snapped: userHasSnapped }">
+   <h1>{{ myLargeNumber | number: '1.0-0' }}</h1>
+   <p>{{ myPercentNumber | percent: '1.0-1' }}</p>
+   <i>{{ myMoney | currency: 'EUR' }}</i>
+   @if (faceSnap; as faceSnap) {
+    <div class="face__snap__card">
+        <h2>{{ faceSnap.title | titlecase }}</h2>
+        <a routerLink="/facesnaps">BACK</a>
+        @if (faceSnap.location) {
+            <i>{{ faceSnap.location | uppercase }}</i>
+        } @else {
+            <p>Location non spécifié</p>
+        }
+        <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
+        <p>{{ faceSnap.description | lowercase}}</p>
+        <p>FaceSnap crée le {{ faceSnap.createdAt | date: 'd MMMM yyyy, HH:mm ' }}</p>
+        <div class="face__snap__button">
+            <button (click)="onSnap()">{{ snapButtonText }}</button>
+            <span [ngStyle]="{ color: 'rgb(0,'+ faceSnap.snapsCounter +',0)'}">{{  faceSnap.snapsCounter }}</span>
+        </div>
+    </div>
+       } @else {
+        <p>FaceSnap indisponible.</p>
+       }
+</div>

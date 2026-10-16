@@ -1,0 +1,10 @@
+{
+  "framework": "angular",
+  "outputDirectory": "dist/snapface/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

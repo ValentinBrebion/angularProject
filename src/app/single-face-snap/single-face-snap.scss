@@ -1,0 +1,45 @@
+.face__snap {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin: 20px auto;
+  width: 50%;
+  &__card {
+    width:50%;
+    img {
+      width: 100%;
+    }
+  }
+  &__button {
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    margin-bottom: 10px;
+    p {
+      margin-left: 10px;
+    }
+    button {
+      width: 150px;
+      height: 30px;
+      background-color: #4169E1;
+      color: white;
+      border-radius: 10px;
+      border: 1px solid #4169E1;
+      &::before {
+        content: "👍";
+      }
+    }
+  }
+}
+.snapped {
+  background-color: rgba(lightgreen, 0.4);
+  color: darkgreen;
+  button {
+    box-shadow: lightgreen 3px 3px 7px;
+    color: darkgreen;
+    &:active {
+      box-shadow: lightgreen 0 0 5px;
+    }
+  }
+}

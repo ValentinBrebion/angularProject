@@ -44,6 +44,18 @@ To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use th
 ng test
 ```
 
+## Continuous integration and deployment
+
+The GitHub Actions workflow in `.github/workflows/ci-cd.yml` runs `npm ci`, the unit tests, and a production build for pull requests and pushes to `master`. A successful push to `master` is then built and deployed to Vercel.
+
+To enable deployment, link this project to a Vercel project and add these repository secrets in **Settings > Secrets and variables > Actions**:
+
+- `VERCEL_TOKEN`: a Vercel access token.
+- `VERCEL_ORG_ID`: the Vercel team or account ID.
+- `VERCEL_PROJECT_ID`: the Vercel project ID.
+
+The Vercel project should use the Angular framework preset. `vercel.json` configures the Angular browser output directory and routes application paths to `index.html`.
+
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
